@@ -1,0 +1,9 @@
+{
+  "statusline": {
+    "rows": [
+      ["location", "context"],
+      ["git", "limit_5h"],
+      ["model", "limit_week"]
+    ]
+  }
+}

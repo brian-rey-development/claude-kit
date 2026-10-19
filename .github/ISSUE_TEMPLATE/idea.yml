@@ -1,0 +1,14 @@
+name: Idea
+description: A widget, a mod, a theme or a change to the kit
+labels: [idea]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would it let you do?
+    validations:
+      required: true
+  - type: textarea
+    id: shape
+    attributes:
+      label: How do you picture it?

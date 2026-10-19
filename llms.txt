@@ -1,0 +1,27 @@
+# claude-kit
+
+> Themes, status line widgets and mini apps for Claude Code on macOS. A theme is a folder of data that the kit turns into a status line, a welcome card, Claude Code colors, a patched Monaco font with a mascot glyph, and an iTerm2 profile. Every change is recorded and can be undone with `kit uninstall`.
+
+Agents should read AGENTS.md first. It lists the non-interactive commands, the repository map, the checks and the rules.
+
+## Start here
+
+- [AGENTS.md](AGENTS.md): commands, repository map, verification and rules for agents
+- [README.md](README.md): what the kit does and how to install it
+
+## Docs
+
+- [Make your first theme](docs/tutorials/first-theme.md): from an image to an applied theme
+- [Add a widget](docs/how-to/add-a-widget.md): a new status line cell
+- [Write a mod](docs/how-to/write-a-mod.md): a mini app inside Claude Code
+- [Tune a palette](docs/how-to/tune-a-palette.md): fix contrast without losing the hue
+- [CLI reference](docs/reference/cli.md): every command and option
+- [Theme format](docs/reference/theme-format.md): fields, files and palette roles
+- [Widget contract](docs/reference/widgets.md): input, output and helpers
+- [Files the kit writes](docs/reference/files.md): every path and how uninstall treats it
+- [How it works](docs/explanation/how-it-works.md): the status line pipeline, the glyph and the iTerm2 profile
+
+## Optional
+
+- [Theme schema](schema/theme.schema.json)
+- [Skills for agents](.claude/skills/): new-theme, new-widget, new-mod

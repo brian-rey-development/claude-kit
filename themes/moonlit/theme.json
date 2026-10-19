@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema/theme.schema.json",
+  "id": "moonlit",
+  "name": "Moonlit",
+  "description": "Deep night blue with a crescent moon, warm starlight and a soft cloud.",
+  "author": "claude-kit",
+  "license": "CC0-1.0",
+  "appearance": "dark",
+  "icon": { "char": "🌙", "cells": 2 },
+  "tagline": "Quiet hours, clear thoughts.",
+  "palette": {
+    "brand": "#E8C170",
+    "accent": "#9DB0F5",
+    "accent_soft": "#C3CCF8",
+    "ok": "#7FC8B0",
+    "warn": "#E8A65A",
+    "danger": "#EF8A85",
+    "merged": "#C6A6F2",
+    "bright": "#F2EEE3",
+    "caption": "#8C93A8",
+    "detail": "#A3AABD",
+    "divider": "#2E3650",
+    "track": "#252C40",
+    "icon": "#F3E3B5"
+  },
+  "terminal": {
+    "background": "#11151F",
+    "foreground": "#E6E2D6",
+    "bold": "#FFFFFF",
+    "cursor": "#E8C170",
+    "cursor_text": "#11151F",
+    "selection": "#2C3757",
+    "selected_text": "#FFFFFF",
+    "link": "#9DB0F5",
+    "tab": "#1B2132",
+    "ansi": [
+      "#1B2030", "#EF8A85", "#8FCB9B", "#E8C170", "#8FA6F0", "#C6A6F2", "#7FC8C0", "#CDD1DC",
+      "#6B7389", "#F5A9A5", "#B0DDB8", "#F3D79A", "#B3C3F7", "#DCC6F8", "#A6DCD5", "#F7F5EF"
+    ]
+  }
+}

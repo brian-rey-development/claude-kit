@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "claude-kit theme",
+  "description": "One theme, with its name, mascot, welcome card tagline, status line palette and terminal colors. The folder that holds theme.json also holds claude.json, art.json and glyph/icon.png.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "description", "author", "license", "appearance", "icon", "tagline", "palette", "terminal"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": {
+      "description": "Folder name and Claude Code theme id (custom:<id>). Lowercase letters, digits and dashes.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,30}$"
+    },
+    "name": { "description": "Display name, also used for the font family and the iTerm2 profile.", "type": "string", "minLength": 2, "maxLength": 30 },
+    "description": { "description": "One sentence shown in the theme picker.", "type": "string", "minLength": 10, "maxLength": 120 },
+    "author": { "type": "string", "minLength": 1 },
+    "license": { "description": "SPDX license of the theme's art, for example CC0-1.0. Use \"personal\" for art you may not share.", "type": "string" },
+    "appearance": { "description": "Whether the terminal background is dark or light.", "enum": ["dark", "light"] },
+    "icon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["char", "cells"],
+      "properties": {
+        "char": { "description": "The character the patched font draws as the mascot. Other fonts show this character itself, so pick an emoji close to the mascot.", "type": "string", "minLength": 1, "maxLength": 2 },
+        "cells": { "description": "Terminal cells the glyph spans: 2 for an emoji, 1 for a narrow character.", "enum": [1, 2] }
+      }
+    },
+    "tagline": { "description": "The line next to the welcome card art. Write your own words.", "type": "string", "minLength": 3, "maxLength": 80 },
+    "palette": {
+      "description": "Status line colors by role. Text roles need 4.5:1 contrast against terminal.background and the icon needs 3:1.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["brand", "accent", "accent_soft", "ok", "warn", "danger", "merged", "bright", "caption", "detail", "divider", "track", "icon"],
+      "properties": {
+        "brand": { "$ref": "#/$defs/color", "description": "Repository name." },
+        "accent": { "$ref": "#/$defs/color", "description": "Branch name, approved PR, agent marks." },
+        "accent_soft": { "$ref": "#/$defs/color", "description": "Commits ahead, staged files, agent types." },
+        "ok": { "$ref": "#/$defs/color", "description": "Meters below the warning level." },
+        "warn": { "$ref": "#/$defs/color", "description": "Meters past the warning level, changed files, pending PR." },
+        "danger": { "$ref": "#/$defs/color", "description": "Meters past the critical level, conflicts, failed agents." },
+        "merged": { "$ref": "#/$defs/color", "description": "Merged PR." },
+        "bright": { "$ref": "#/$defs/color", "description": "Model name and cost." },
+        "caption": { "$ref": "#/$defs/color", "description": "Labels such as context and 5h limit, and the welcome card tagline." },
+        "detail": { "$ref": "#/$defs/color", "description": "Secondary text such as token counts and reset times." },
+        "divider": { "$ref": "#/$defs/color", "description": "The rule between columns. Decorative." },
+        "track": { "$ref": "#/$defs/color", "description": "The empty part of a meter bar. Decorative." },
+        "icon": { "$ref": "#/$defs/color", "description": "The mascot where a terminal draws its outline in one color." }
+      }
+    },
+    "terminal": {
+      "description": "Terminal colors, written to the iTerm2 profile.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["background", "foreground", "bold", "cursor", "cursor_text", "selection", "selected_text", "link", "tab", "ansi"],
+      "properties": {
+        "background": { "$ref": "#/$defs/color" },
+        "foreground": { "$ref": "#/$defs/color" },
+        "bold": { "$ref": "#/$defs/color" },
+        "cursor": { "$ref": "#/$defs/color" },
+        "cursor_text": { "$ref": "#/$defs/color" },
+        "selection": { "$ref": "#/$defs/color" },
+        "selected_text": { "$ref": "#/$defs/color" },
+        "link": { "$ref": "#/$defs/color" },
+        "tab": { "$ref": "#/$defs/color" },
+        "ansi": {
+          "description": "The 16 ANSI colors, in the order black, red, green, yellow, blue, magenta, cyan, white, then their bright forms.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/color" },
+          "minItems": 16,
+          "maxItems": 16
+        }
+      }
+    }
+  },
+  "$defs": {
+    "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+  }
+}

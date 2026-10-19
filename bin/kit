@@ -1,0 +1,27 @@
+#!/bin/bash
+# Runs the claude-kit CLI from its own Python environment, which it makes or refreshes when
+# requirements.txt changes. Works from any directory and through a symlink on your PATH.
+set -euo pipefail
+
+root="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
+venv="$root/.venv"
+stamp="$venv/.requirements"
+
+python_ready() { [[ -x $venv/bin/python && -f $stamp ]] && cmp -s "$stamp" "$root/requirements.txt"; }
+
+make_venv() {
+  echo "Preparing claude-kit (one time, about 20 seconds)..." >&2
+  rm -rf "$venv"
+  if command -v uv >/dev/null; then
+    uv venv -q --python python3 "$venv"
+    uv pip install -q --python "$venv/bin/python" -r "$root/requirements.txt"
+  else
+    python3 -m venv "$venv"
+    "$venv/bin/python" -m pip install -q --disable-pip-version-check --upgrade pip
+    "$venv/bin/python" -m pip install -q --disable-pip-version-check -r "$root/requirements.txt"
+  fi
+  cp "$root/requirements.txt" "$stamp"
+}
+
+python_ready || make_venv
+PYTHONPATH="$root" exec "$venv/bin/python" -m claude_kit "$@"

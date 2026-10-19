@@ -1,0 +1,852 @@
+[
+  [
+    [
+      {
+        "text": "                           ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄▄",
+        "fg": "#E8C170",
+        "bg": null
+      },
+      {
+        "text": " ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "      ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "▄███▀",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "              ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▀█▀",
+        "fg": "#E8C170",
+        "bg": null
+      },
+      {
+        "text": " ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "   ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#D8C28A",
+        "bg": "#F3E3B5"
+      },
+      {
+        "text": "█████▀",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "                   ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "  ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#D8C28A",
+        "bg": "#F3E3B5"
+      },
+      {
+        "text": "██████",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "                    ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": " ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "█",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "████████",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "           ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "█▄",
+        "fg": "#E8C170",
+        "bg": null
+      },
+      {
+        "text": "       ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "▄█",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "████████▄",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "        ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▀████",
+        "fg": "#E8C170",
+        "bg": null
+      },
+      {
+        "text": "      ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "█",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "██████████",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "          ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "█",
+        "fg": "#E8C170",
+        "bg": null
+      },
+      {
+        "text": "        ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "█",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#F3E3B5",
+        "bg": "#D8C28A"
+      },
+      {
+        "text": "██████████▄",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "                 ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "██",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "████████████▄▄",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "        ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "     ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": " ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "█",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#F3E3B5",
+        "bg": "#D8C28A"
+      },
+      {
+        "text": "██████",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "▀▀▀",
+        "fg": "#F3E3B5",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "████████████▀",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "     ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "  ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "██",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "██",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "▀▀",
+        "fg": "#F3E3B5",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "██████",
+        "fg": "#DDE2F7",
+        "bg": null
+      },
+      {
+        "text": "█████████",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "      ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "   ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#D8C28A",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "████████████",
+        "fg": "#DDE2F7",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#F3E3B5",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "███",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "▀▀",
+        "fg": "#F3E3B5",
+        "bg": "#D8C28A"
+      },
+      {
+        "text": "▀",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "       ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "   ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "███████████████",
+        "fg": "#DDE2F7",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#F3E3B5",
+        "bg": "#D8C28A"
+      },
+      {
+        "text": "▀",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "          ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "  ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "█████████████████",
+        "fg": "#DDE2F7",
+        "bg": null
+      },
+      {
+        "text": "           ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "  ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#AEB6E6",
+        "bg": null
+      },
+      {
+        "text": "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀",
+        "fg": "#DDE2F7",
+        "bg": "#AEB6E6"
+      },
+      {
+        "text": "▀",
+        "fg": "#AEB6E6",
+        "bg": null
+      },
+      {
+        "text": "           ",
+        "fg": null,
+        "bg": null
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "      ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄▄",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "            ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "  ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "▄███",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "             ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": " ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "█████",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "       ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄",
+        "fg": "#E8C170",
+        "bg": null
+      },
+      {
+        "text": "     ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "▄",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "██████",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "      ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄█▄",
+        "fg": "#E8C170",
+        "bg": null
+      },
+      {
+        "text": "    ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "█",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "██████▄",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "      ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#E8C170",
+        "bg": null
+      },
+      {
+        "text": "     ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "█",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "████████▄",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "          ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": " ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "█",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "███",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "▀▀▀▀",
+        "fg": "#F3E3B5",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "███████",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "    ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "  ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#D8C28A",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "███████",
+        "fg": "#DDE2F7",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#F3E3B5",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "███",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#F3E3B5",
+        "bg": "#D8C28A"
+      },
+      {
+        "text": "     ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "  ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "██████████",
+        "fg": "#DDE2F7",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#D8C28A",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "       ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "  ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▀▀▀▀▀▀▀▀▀▀",
+        "fg": "#DDE2F7",
+        "bg": "#AEB6E6"
+      },
+      {
+        "text": "▀",
+        "fg": "#DDE2F7",
+        "bg": null
+      },
+      {
+        "text": "       ",
+        "fg": null,
+        "bg": null
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "   ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄▄",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "         ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": " ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄███",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "         ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "█",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "████",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "    ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▄█",
+        "fg": "#E8C170",
+        "bg": null
+      },
+      {
+        "text": "   ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "█",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "████▄",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "        ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": "▀",
+        "fg": "#D8C28A",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#F3E3B5",
+        "bg": "#D8C28A"
+      },
+      {
+        "text": "██",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "▀▀",
+        "fg": "#F3E3B5",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "██▄▄█",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "   ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": " ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#D8C28A",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "█████",
+        "fg": "#DDE2F7",
+        "bg": null
+      },
+      {
+        "text": "▀",
+        "fg": "#F3E3B5",
+        "bg": "#DDE2F7"
+      },
+      {
+        "text": "█▀",
+        "fg": "#F3E3B5",
+        "bg": null
+      },
+      {
+        "text": "    ",
+        "fg": null,
+        "bg": null
+      }
+    ],
+    [
+      {
+        "text": " ",
+        "fg": null,
+        "bg": null
+      },
+      {
+        "text": "███████▀",
+        "fg": "#DDE2F7",
+        "bg": null
+      },
+      {
+        "text": "     ",
+        "fg": null,
+        "bg": null
+      }
+    ]
+  ]
+]
