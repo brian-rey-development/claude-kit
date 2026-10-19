@@ -6,7 +6,7 @@ source "${BASH_SOURCE[0]%/*}/env.sh"
 
 IFS= read -r -d '' input
 { IFS= read -r cwd; IFS= read -r session; IFS= read -r transcript; IFS= read -r has_pr; } < <(
-  jq -r '.workspace.current_dir // .cwd // "", .session_id // "", .transcript_path // "", (.pr != null)' <<<"$input"
+  "$jq_bin" -r '.workspace.current_dir // .cwd // "", .session_id // "", .transcript_path // "", (.pr != null)' <<<"$input"
 )
 cwd="${cwd:-$PWD}"
 
@@ -60,7 +60,7 @@ fi
 session_pr=''
 [[ -f $pr_cache ]] && session_pr="$(<"$pr_cache")"
 
-jq -r -L "$kit_root/statusline" -L "$kit_root/widgets" -L "$theme_dir" \
+"$jq_bin" -r -L "$kit_root/statusline" -L "$kit_root/widgets" -L "$theme_dir" \
   --arg git "$(<"$git_cache")" --arg session_pr "$session_pr" \
   --slurpfile config "$config" --slurpfile defaults "$kit_root/statusline/defaults.json" \
   -f "$kit_root/statusline/render.jq" <<<"$input"

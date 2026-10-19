@@ -15,6 +15,7 @@ from claude_kit.paths import Paths
 from claude_kit.theme import Theme
 
 FAST_RENDER_SECONDS = 0.3
+BROKEN_JQ = {"jq-1.8.2": "https://github.com/jqlang/jq/issues/3636"}
 
 
 Level = Literal["ok", "warn", "fail"]
@@ -46,13 +47,27 @@ def _version(command: list[str]) -> str | None:
     return (result.stdout or result.stderr).strip().splitlines()[0] if result.returncode == 0 else None
 
 
-def tools(_: Paths) -> list[Finding]:
-    claude, jq = _version(["claude", "--version"]), _version(["jq", "--version"])
+def jq_finding(version: str | None) -> Finding:
+    if version is None:
+        return fail("jq is not installed.", "brew install jq")
+    if version in BROKEN_JQ:
+        return fail(
+            f"{version} has a bug that stops the status line ({BROKEN_JQ[version]}).",
+            "Use macOS 15 or later, which ships a working jq, or install another jq release.",
+        )
+    return ok(version)
+
+
+def tools(paths: Paths) -> list[Finding]:
+    claude = _version(["claude", "--version"])
+    jq = _version(
+        ["bash", "-c", 'source "$1" && "$jq_bin" --version', "bash", str(paths.statusline / "env.sh")]
+    )
     return [
         ok(f"Claude Code {claude}")
         if claude
         else fail("Claude Code is not installed.", "https://docs.claude.com/en/docs/claude-code/setup"),
-        ok(f"jq {jq}") if jq else fail("jq is not installed.", "brew install jq"),
+        jq_finding(jq),
         ok("Monaco is available") if font.BASE_FONT.exists() else fail(f"{font.BASE_FONT} is missing."),
     ]
 

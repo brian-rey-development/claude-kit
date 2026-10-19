@@ -30,7 +30,7 @@ The setup checks your Mac first, then draws the theme right in your terminal, of
   <img src="docs/images/setup.png" alt="The guided setup, showing the Moonlit card, a sample status line, the palette and the list of changes" width="720">
 </p>
 
-It needs macOS, [Claude Code](https://docs.claude.com/en/docs/claude-code/setup) and `jq`, which ships with macOS 15 and installs elsewhere with `brew install jq`. [iTerm2](https://iterm2.com) is optional, because the status line and the welcome card work in any terminal, and only the colors and the mascot font need it.
+It needs macOS, [Claude Code](https://docs.claude.com/en/docs/claude-code/setup) and `jq`, which ships with macOS 15 and installs elsewhere with `brew install jq`. The status line prefers the jq that macOS ships, because jq 1.8.2 has a [bug](https://github.com/jqlang/jq/issues/3636) that stops it, and `kit doctor` reports that version when it is the only one. [iTerm2](https://iterm2.com) is optional, because the status line and the welcome card work in any terminal, and only the colors and the mascot font need it.
 
 To undo everything, run `kit uninstall`. The kit records what your settings held before the first install, so uninstall puts back exactly that and removes every file the kit added.
 
