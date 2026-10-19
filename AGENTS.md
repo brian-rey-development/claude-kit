@@ -34,7 +34,7 @@ To make a theme from a picture they give you, follow [.claude/skills/new-theme/S
 | `mods/` | Claude Code mods (mini apps). Every folder with `.claude-plugin/plugin.json` is loaded |
 | `themes/` | Bundled themes. Personal themes live in `~/.config/claude-kit/themes/` and win on an id clash |
 | `schema/theme.schema.json` | The contract every `theme.json` is validated against |
-| `docs/` | Tutorials, how-to guides, reference and explanation |
+| `docs/` | Tutorials, how-to guides, reference and explanation. `docs/images/` holds the README screenshots, redrawn by `make screenshots` |
 | `tests/` | pytest suite; `mods/*/tests/` hold the mod tests |
 
 ## Verify a change

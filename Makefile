@@ -1,7 +1,7 @@
 # Every gate CI runs. `make check` before each commit; `make format` fixes what it can.
 PY := uvx --python 3.9 --with-requirements requirements.txt
 
-.PHONY: check lint types test test-shell test-mods format
+.PHONY: check lint types test test-shell test-mods format screenshots
 
 check: lint types test test-shell test-mods
 
@@ -25,3 +25,6 @@ test-mods:
 format:
 	uvx ruff format .
 	uvx ruff check --fix .
+
+screenshots:
+	PYTHONPATH=. uv run --no-project --python 3.9 --with-requirements requirements.txt python docs/images/render.py

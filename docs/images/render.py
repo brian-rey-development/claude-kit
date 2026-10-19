@@ -1,110 +1,136 @@
-"""Renders the README screenshot from a theme's real card art and real status line output.
+"""Renders the README screenshots from real kit output, in a throwaway home so nothing on this Mac changes.
 
-Usage: bin/kit cards && PYTHONPATH=. .venv/bin/python docs/images/render.py <theme-id> <out.png>
+Usage: make screenshots
+
+Run it on a clean checkout, because the setup screenshots show this repository's own git status.
 """
 
 from __future__ import annotations
 
-import re
+import os
+import shutil
+import subprocess
 import sys
+import tempfile
+from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+sys.path.insert(0, str(Path(__file__).parent))
 
-from claude_kit import art, sample, theme
-from claude_kit.paths import Paths
+import pty_session
+import sunflower
+from terminal import screenshot
+
+from claude_kit import sample, theme
+from claude_kit.color import sgr
+from claude_kit.paths import KIT_ROOT, Paths
 from claude_kit.theme import Theme
 
-FONT = "/System/Library/Fonts/Menlo.ttc"
-FONT_SIZE, CELL_WIDTH, LINE_HEIGHT, PADDING = 26, 16, 34, 44
-COLUMNS = 96
-PROMPT = "> make me a theme from this photo"
-ESCAPE = re.compile(r"\x1b\[([0-9;]*)m|\x1b\]8;;[^\x1b]*\x1b\\")
+IMAGES = Path(__file__).parent
+COLUMNS = 100
+SESSION_COLUMNS = 96
+WIDTHS = (80, 66, 52, 38)
+PROMPT = "> add a dark mode toggle to the settings page"
+SETUP_ANSWERS = (
+    ("first? [y/N]", "n"),
+    ("Use Moonlit? [Y/n]", "y"),
+    ("profile? [Y/n]", "n"),
+    ("Apply them? [Y/n]", "n"),
+)
 
 
-def halves(glyph: str, run: art.Run) -> tuple[art.Color, art.Color]:
-    """The colors of a cell's upper and lower pixel."""
-    if glyph == "█":
-        return run["fg"], run["fg"]
-    if glyph == "▀":
-        return run["fg"], run["bg"]
-    return (None, run["fg"]) if glyph == "▄" else (None, None)
+def painted(text: str, foreground: str | None, background: str | None = None) -> str:
+    code = sgr(foreground, background)
+    return f"\x1b[{code}m{text}\x1b[0m" if code else text
 
 
-def colored_spans(line: str, default: str) -> list[tuple[str, str]]:
-    spans: list[tuple[str, str]] = []
-    color, start = default, 0
-    for match in ESCAPE.finditer(line):
-        spans.append((line[start : match.start()], color))
-        codes = (match.group(1) or "").split(";")
-        if "38" in codes:
-            red, green, blue = codes[codes.index("38") + 2 : codes.index("38") + 5]
-            color = f"#{int(red):02X}{int(green):02X}{int(blue):02X}"
-        elif match.group(1) == "0":
-            color = default
-        start = match.end()
-    return [*spans, (line[start:], color)]
+def typed(command: str) -> str:
+    return f"\x1b[2m$\x1b[0m {command}\n"
 
 
-@dataclass
-class Screen:
-    chosen: Theme
-    image: Image.Image
+@dataclass(frozen=True)
+class Studio:
+    home: Path
+    repo: Path
+    out: Path
 
-    def __post_init__(self) -> None:
-        self.draw = ImageDraw.Draw(self.image)
-        self.font = ImageFont.truetype(FONT, FONT_SIZE)
+    @property
+    def paths(self) -> Paths:
+        return Paths.for_home(self.home)
 
-    def text(self, x: int, y: int, line: str) -> None:
-        for text, color in colored_spans(line, self.chosen.terminal["foreground"]):
-            self.draw.text((x, y), text, font=self.font, fill=color)
-            x += round(self.draw.textlength(text, font=self.font))
+    @property
+    def moonlit(self) -> Theme:
+        return theme.find(self.paths, "moonlit")
 
-    def rule(self, y: int) -> None:
-        self.draw.line(
-            (PADDING, y, self.image.width - PADDING, y), fill=self.chosen.palette["divider"], width=2
-        )
+    def kit(self, args: Sequence[str], answers: Sequence[tuple[str, str]] = ()) -> str:
+        argv = [str(KIT_ROOT / "bin" / "kit"), *args]
+        return pty_session.run(argv, columns=COLUMNS, answers=answers, env=os.environ, cwd=self.repo)
 
-    def pixel(self, column: int, row: int, color: str) -> None:
-        left, top = PADDING + column * CELL_WIDTH, PADDING + row * LINE_HEIGHT // 2
-        self.image.paste(color, (left, top, left + CELL_WIDTH, top + LINE_HEIGHT // 2))
-
-    def card(self, rows: art.Art) -> None:
-        for row_index, row in enumerate(rows):
-            glyphs = [(glyph, run) for run in row for glyph in run["text"]]
-            for column, (glyph, run) in enumerate(glyphs):
-                for half, color in enumerate(halves(glyph, run)):
-                    if color:
-                        self.pixel(column, row_index * 2 + half, color)
+    def status(self, chosen: Theme, columns: int) -> list[str]:
+        return sample.statusline(self.paths, chosen, columns, self.repo).stdout.splitlines()
 
 
-def render(theme_id: str, out: Path) -> None:
-    paths = Paths.from_env()
-    chosen = theme.find(paths, theme_id)
-    rows = chosen.art_sizes[0]
-    status = sample.statusline(paths, chosen, COLUMNS, paths.kit).stdout.splitlines()
-    size = (PADDING * 2 + CELL_WIDTH * COLUMNS, PADDING * 2 + LINE_HEIGHT * (len(rows) + len(status) + 4))
-    screen = Screen(chosen, Image.new("RGB", size, chosen.terminal["background"]))
-    screen.card(rows)
-    tagline_x = PADDING + CELL_WIDTH * (art.width(rows) + 3)
-    screen.draw.text(
-        (tagline_x, PADDING + LINE_HEIGHT * (len(rows) // 2)),
-        chosen.tagline,
-        font=screen.font,
-        fill=chosen.palette["caption"],
-    )
-    prompt_y = PADDING + LINE_HEIGHT * (len(rows) + 1)
-    screen.rule(prompt_y)
-    screen.text(PADDING, prompt_y + 8, PROMPT)
-    screen.rule(prompt_y + LINE_HEIGHT + 16)
-    for index, line in enumerate(status):
-        screen.text(PADDING, prompt_y + LINE_HEIGHT * (index + 2), line.replace(chosen.icon, "  ", 1))
-    icon = Image.open(chosen.directory / "glyph" / "icon.png").convert("RGBA")
-    icon.thumbnail((CELL_WIDTH * 2, LINE_HEIGHT - 6))
-    screen.image.paste(icon, (PADDING, prompt_y + LINE_HEIGHT * 2 + 2), icon)
-    screen.image.save(out)
+def session(studio: Studio) -> None:
+    chosen = studio.moonlit
+    rows = ["".join(painted(run["text"], run["fg"], run["bg"]) for run in row) for row in chosen.art_sizes[0]]
+    rows[len(rows) // 2] += "   " + painted(chosen.tagline, chosen.palette["caption"])
+    rule = painted("─" * SESSION_COLUMNS, chosen.palette["divider"])
+    lines = ["", *rows, "", rule, PROMPT, rule, *studio.status(chosen, SESSION_COLUMNS)]
+    out = studio.out / "moonlit.png"
+    screenshot(chosen, "\n".join(lines), out, columns=SESSION_COLUMNS, title="claude")
+
+
+def widths(studio: Studio) -> None:
+    chosen = studio.moonlit
+    lines: list[str] = []
+    for columns in WIDTHS:
+        label = painted(f"{columns} columns", chosen.palette["detail"])
+        lines += [label, *studio.status(chosen, columns), ""]
+    screenshot(chosen, "\n".join(lines), studio.out / "widths.png", columns=WIDTHS[0], title="status line")
+
+
+def setup(studio: Studio) -> None:
+    text = typed("kit setup") + studio.kit(["setup"], SETUP_ANSWERS)
+    screenshot(studio.moonlit, text, studio.out / "setup.png", columns=COLUMNS, title="kit setup")
+
+
+def new_theme(studio: Studio) -> None:
+    card, icon = sunflower.draw_into(studio.home)
+    shutil.copy2(card, studio.out / "sunflower.png")
+    options = ["--light", "--emoji", "🌻", "--tagline", "Turn toward the light.", "--author", "claude-kit"]
+    output = studio.kit(["new-theme", "sunflower", "--image", str(card), "--icon", str(icon), *options])
+    text = typed("kit new-theme sunflower --image sunflower.png --light") + output
+    created = theme.load(studio.paths.user_themes / "sunflower")
+    screenshot(created, text, studio.out / "new-theme.png", columns=COLUMNS, title="kit new-theme")
+
+
+def sample_repo(root: Path) -> Path:
+    repo = root / "storefront"
+    repo.mkdir()
+    git = ["git", "-C", str(repo), "-c", "user.name=kit", "-c", "user.email=kit@example.com"]
+    subprocess.run([*git, "init", "--quiet", "--initial-branch", "feat/dark-mode"], check=True)
+    (repo / "settings.tsx").write_text("export const Settings = () => null\n")
+    subprocess.run([*git, "add", "."], check=True)
+    subprocess.run([*git, "commit", "--quiet", "--message", "Start the settings page"], check=True)
+    (repo / "settings.tsx").write_text("export const Settings = () => <Toggle />\n")
+    (repo / "toggle.tsx").write_text("export const Toggle = () => null\n")
+    return repo
+
+
+def main() -> None:
+    with tempfile.TemporaryDirectory() as scratch:
+        root = Path(scratch).resolve()
+        os.environ["HOME"] = str(root)
+        for override in ("CLAUDE_KIT_HOME", "CLAUDE_CONFIG_DIR"):
+            os.environ.pop(override, None)
+        studio = Studio(home=root, repo=sample_repo(root), out=root / "out")
+        studio.out.mkdir()
+        for scene in (setup, new_theme, session, widths):
+            scene(studio)
+        for image in studio.out.iterdir():
+            shutil.copy2(image, IMAGES / image.name)
 
 
 if __name__ == "__main__":
-    render(sys.argv[1], Path(sys.argv[2]))
+    main()

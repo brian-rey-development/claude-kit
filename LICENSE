@@ -20,6 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-The art in themes/moonlit is dedicated to the public domain under CC0 1.0.
+The art in themes/moonlit and the sunflower drawn by docs/images/sunflower.py
+are dedicated to the public domain under CC0 1.0.
 Monaco is Apple's font and is not part of this repository; claude-kit builds a
 patched copy on each Mac from the Monaco that Mac already has.

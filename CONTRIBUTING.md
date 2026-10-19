@@ -20,7 +20,8 @@ make check
 2. Write the test first. A bug fix needs a test that fails without the fix.
 3. Run `make format`, then `make check`.
 4. Update the docs the change touches. [AGENTS.md](AGENTS.md) maps what lives where, and [docs/reference/files.md](docs/reference/files.md) must list every file the kit writes.
-5. Use [Conventional Commits](https://www.conventionalcommits.org), such as `feat(widgets): add a lines widget`.
+5. If the change alters what a README screenshot shows, commit it, run `make screenshots` on the clean tree, and commit the new images.
+6. Use [Conventional Commits](https://www.conventionalcommits.org), such as `feat(widgets): add a lines widget`.
 
 ## Conventions
 
